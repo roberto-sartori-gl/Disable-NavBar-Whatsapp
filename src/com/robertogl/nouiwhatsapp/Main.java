@@ -37,5 +37,6 @@ public class Main implements IXposedHookZygoteInit, IXposedHookInitPackageResour
             }
                 });
         
+        
     }
 	}
