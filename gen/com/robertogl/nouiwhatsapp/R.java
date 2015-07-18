@@ -11,13 +11,19 @@ public final class R {
     public static final class attr {
     }
     public static final class dimen {
-        public static final int tab_height=0x7f030000;
+        public static final int tab_height=0x7f040000;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int e10c=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
     }
     public static final class string {
-        public static final int app_name=0x7f040000;
+        public static final int app_name=0x7f050005;
+        public static final int pref_category_individual_conversations=0x7f050000;
+        public static final int pref_title_remove_bar=0x7f050003;
+        public static final int pref_title_remove_camera=0x7f050001;
+        public static final int pref_title_remove_voice=0x7f050002;
+        public static final int pref_title_stick_bar=0x7f050004;
     }
     public static final class style {
         /** 
@@ -41,10 +47,13 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f050000;
+        public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f050001;
+        public static final int AppTheme=0x7f060001;
+    }
+    public static final class xml {
+        public static final int pref=0x7f030000;
     }
 }

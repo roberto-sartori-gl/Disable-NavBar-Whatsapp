@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.robertogl.nouiwhatsapp"
-    android:versionCode="2"
-    android:versionName="1.1" >
+    android:versionCode="3"
+    android:versionName="1.2" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -20,7 +20,16 @@
             android:value="30" />
         <meta-data
             android:name="xposeddescription"
-            android:value="Disable the Whatsapp bar containing 'Call', 'Conversations' and 'Contacts'" />
+            android:value="Some options for a better WhatsApp'" />
+            
+        <activity
+            android:name="com.robertogl.nouiwhatsapp.SettingsActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
