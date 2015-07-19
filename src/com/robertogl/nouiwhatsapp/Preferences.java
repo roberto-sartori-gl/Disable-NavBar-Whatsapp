@@ -35,6 +35,10 @@ public class Preferences {
     public static boolean hasStickWhatsAppBarPreference() {
         return getInstance().getBoolean("whatsapp_stick_bar", true);
     }
+    
+    public static boolean hasRemoveCallQuick() {
+        return getInstance().getBoolean("whatsapp_quick_call", true);
+    }
 
 
 }

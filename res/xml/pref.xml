@@ -13,8 +13,12 @@
             android:key="whatsapp_remove_bar"
             android:title="@string/pref_title_remove_bar" />
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="whatsapp_stick_bar"
             android:title="@string/pref_title_stick_bar" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="whatsapp_quick_call"
+            android:title="@string/pref_title_quick_call" />
     </PreferenceCategory>
 </PreferenceScreen>

@@ -11,11 +11,14 @@ import android.content.res.XResources;
 import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.graphics.Color;
+import de.robv.android.xposed.XC_MethodHook;
 import android.graphics.drawable.Drawable;
 import android.widget.LinearLayout;
 import android.widget.FrameLayout;
 import android.graphics.PorterDuff.Mode;
+import android.view.MotionEvent;
 import de.robv.android.xposed.callbacks.XC_LayoutInflated;
 
     public class MainNew implements IXposedHookZygoteInit, IXposedHookLoadPackage, IXposedHookInitPackageResources {
@@ -67,22 +70,23 @@ import de.robv.android.xposed.callbacks.XC_LayoutInflated;
     		    }
     	 
             });
-            resparam.res.setReplacement("com.whatsapp", "drawable", "msg_status_cam", new XResources.DrawableLoader() {
-    		    @Override
-    		    public Drawable newDrawable(XResources res, int id) throws Throwable {	   	    	
-    		    	
-    		    	Drawable draw = (Drawable) res.getDrawable(R.drawable.e10c);
-    		    	draw.setColorFilter(Color.TRANSPARENT, Mode.MULTIPLY);
-    		        return draw;
-    		    }
-    	 
-            });
             }
             
             if (Preferences.hasRemoveWhatsAppBarPreference()){
             resparam.res.setReplacement("com.whatsapp", "dimen", "tab_height", modRes.fwd(R.dimen.tab_height));
             }
             
+            if (Preferences.hasRemoveCallQuick()){
+            resparam.res.hookLayout("com.whatsapp", "layout", "quick_contact", new XC_LayoutInflated() {
+                @Override
+                public void handleLayoutInflated(LayoutInflatedParam liparam) throws Throwable {
+                	ImageButton callButton = (ImageButton) liparam.view.findViewById(
+                            liparam.res.getIdentifier("call_btn", "id", "com.whatsapp"));
+                	LinearLayout.LayoutParams frameLayoutParamsc = new LinearLayout.LayoutParams(0, 0);
+                    callButton.setLayoutParams(frameLayoutParamsc);
+                }
+            });
+            }
             
             resparam.res.hookLayout("com.whatsapp", "layout", "conversation", new XC_LayoutInflated() {
                 @Override
@@ -92,6 +96,7 @@ import de.robv.android.xposed.callbacks.XC_LayoutInflated;
                             liparam.res.getIdentifier("voice_note_btn", "id", "com.whatsapp"));
                 	FrameLayout.LayoutParams frameLayoutParams = new FrameLayout.LayoutParams(0, 0);
                     voiceButton.setLayoutParams(frameLayoutParams);
+                    
                 			}
                 	if (Preferences.hasRemoveCameraPreference()){
                     ImageButton cameraButton = (ImageButton) liparam.view.findViewById(

@@ -4,4 +4,5 @@
     <string name="pref_title_remove_voice">Remove voice message shortcut</string>
     <string name="pref_title_remove_bar">Remove bar (Contact-Call-Conversation)</string>
     <string name="pref_title_stick_bar">Force bars to not disappear when scrolling</string>
+    <string name="pref_title_quick_call">Remove call option from quick contact screen</string>
 </resources>
